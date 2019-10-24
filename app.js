@@ -12,7 +12,8 @@ then report how many 1/64s from remained "f"
 */
 
 
-let inputNumber = 0
+// let i = null;
+let num = null;
 let a = 1;
 let b = 0.5;
 let c = 0.25;
@@ -20,18 +21,55 @@ let d = 0.125;
 let e = 0.0625;
 let f = 0.3125;
 let g = 0.015625;
-let output = 0
+let output = null;
+let hold = null;
 
+const valueList = [a, b, c, d, e, f, g];
 
-num = 5;
+// const modRunner = (i) => {
+//   console.log(`starting value = ` + i);
+//   hold = i%a;
+//   output = (i-hold)/a;
+//   console.log(`There are ${output} ${a}\'s in ${i}`);
+//   i = hold;
+//   hold = i%b;
+//   output = (i-hold)/b;
+//   console.log(`There are ${output} ${b}\'s in ${i}`);
+//   i = hold;
+//   hold = i%c;
+//   output = (i-hold)/c;
+//   console.log(`There are ${output} ${c}\'s in ${i}`);
+//   i = hold;
+//   hold = i%d;
+//   output = (i-hold)/d;
+//   console.log(`There are ${output} ${d}\'s in ${i}`);
+//   i = hold;
+//   hold = i%e;
+//   output = (i-hold)/e;
+//   console.log(`There are ${output} ${e}\'s in ${i}`);
+//   i = hold;
+//   hold = i%f;
+//   output = (i-hold)/f;
+//   console.log(`There are ${output} ${f}\'s in ${i}`);
+//   i = hold;
+//   hold = i%g;
+//   output = (i-hold)/g;
+//   console.log(`There are ${output} ${g}\'s in ${i}`);
+// }
 
-const name = (num) => {
-	output.push(num);
-  return output;
+const modRunner2 = (num) => {
+  hold = num%a;
+  output = (num-hold)/a;
+  console.log(`There are ${output} ${a}\'s in ${num}`);
+  for (let i=1; i < valueList.length; i++) {
+    num = hold;
+    hold = num%valueList[i];
+    output = (num-hold)/valueList[i];
+    console.log(`There are ${output} ${valueList[i]}\'s in ${valueList[i]}`);
+  };
 }
 
 
-name;
 
 
 // let x = function modRunner(num) {
@@ -46,16 +84,16 @@ name;
 
 // EX//
 
-// 30.625(i) % 1 = 0.625(x)
-// 30.625(i) - 0.625(x) = 30(a)
+// 30.625(i) % 1 = 0.625(hold)
+// 30.625(i) - 0.625(hold) = 30(a)
 
-// 0.625(x) % 0.5 = 0.125(x)
-// 0.625(x) - 0.125(x) = 0.5(b)
+// 0.625(hold) % 0.5 = 0.125(hold)
+// 0.625(hold) - 0.125(hold) = 0.5(b)
 
-// 0.125(x) % 0.0625 = 0(x)
-// 0.125(x) - 0.0625 = 0.0625(x)
+// 0.125(hold) % 0.0625 = 0(hold)
+// 0.125(hold) - 0.0625 = 0.0625(hold)
 
-// 0.0625(x) % 0.03125 = 0(x)
+// 0.0625(hold) % 0.03125 = 0(hold)
 // 0 - 0.03125 = Problem, make a filter for negative numbers.
 // > build in a comparison, if pret-set value is greater than remainder - move on to next pre-set value
 
